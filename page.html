@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> AevoRisk </title>
+    <style>
+        /* Basic CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: #f4f4f4;
+        }
+
+        .hero img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tools">My Tools</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Page -->
+        <section id="home" class="hero">
+            <img src="your-photo.jpg" alt="">
+            <h1>Yiwei Zhao, Ph.D FIA</h1>
+            <p>Longevity Actuary | Phoenix Group | UK</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2>About Me</h2>
+            <p>A passionate developer with experience in...</p>
+            <!-- Add more content -->
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <!-- Add your skills -->
+            </div>
+        </section>
+
+        <!-- Tools Page -->
+        <section id="tools" class="section">
+            <h2>Developed Tools</h2>
+            <div class="tools-grid">
+                <!-- Tool Cards -->
+                <div class="tool-card">
+                    <h3>Tool 1</h3>
+                    <p>Description of your tool and its purpose.</p>
+                    <p>Technologies: React, Node.js, MongoDB</p>
+                    <a href="#">Live Demo</a> | <a href="#">GitHub</a>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Tool 2</h3>
+                    <p>Description of your tool and its purpose.</p>
+                    <p>Technologies: Python, Django, PostgreSQL</p>
+                    <a href="#">Live Demo</a> | <a href="#">GitHub</a>
+                </div>
+                <!-- Add more tools -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <p>Email: your.email@example.com</p>
+            <p>LinkedIn: <a href="#">your-profile</a></p>
+            <p>GitHub: <a href="#">your-username</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
