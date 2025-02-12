@@ -3,173 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> AevoRisk </title>
+    <title>AevoSure</title>
     <style>
-        /* Basic CSS Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-
-        /* Navigation */
-        nav {
-            background: #2c3e50;
-            padding: 1rem;
-        }
-
-        nav ul {
-            list-style: none;
+        .header {
+            background-color: #F5D1D8;
+            color: #3D62C1;
             display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: #f4f4f4;
-        }
-
-        .hero img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        /* Sections */
-        .section {
-            padding: 3rem 0;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-
-        /* Tools Grid */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 20px;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: relative;
-            bottom: 0;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            padding: 2rem;
             width: 100%;
         }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #2c3e50;
+            object-fit: cover;
+        }
+        .header-info {
+            flex: 1;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        /* Keep other existing styles from previous version */
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#tools">My Tools</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Home Page -->
-        <section id="home" class="hero">
-            <img src="images/photo.jpg" alt="">
+    <div class="header">
+        <img src="photo.jpg" alt="Yiwei Zhao, Profile Photo" class="profile-img">
+        <div class="header-info">
             <h1>Yiwei Zhao, PhD FIA</h1>
-            <p>Longevity Actuary | Phoenix Group | UK</p>
-        </section>
-
-        <!-- About Section -->
-        <section class="section">
-            <h2>About Me</h2>
-            <p>A passionate developer with experience in...</p>
-            <!-- Add more content -->
-        </section>
-
-        <!-- Skills Section -->
-        <section class="section">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <!-- Add your skills -->
-            </div>
-        </section>
-
-        <!-- Tools Page -->
-        <section id="tools" class="section">
-            <h2>Developed Tools</h2>
-            <div class="tools-grid">
-                <!-- Tool Cards -->
-                <div class="tool-card">
-                    <h3>Tool 1</h3>
-                    <p>Description of your tool and its purpose.</p>
-                    <p>Technologies: React, Node.js, MongoDB</p>
-                    <a href="#">Live Demo</a> | <a href="#">GitHub</a>
-                </div>
-
-                <div class="tool-card">
-                    <h3>Tool 2</h3>
-                    <p>Description of your tool and its purpose.</p>
-                    <p>Technologies: Python, Django, PostgreSQL</p>
-                    <a href="#">Live Demo</a> | <a href="#">GitHub</a>
-                </div>
-                <!-- Add more tools -->
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2>Contact Me</h2>
-            <p>Email: yiwei_zhao@hotmail.com</p>
-            <p>LinkedIn: <a href="https://r.search.yahoo.com/_ylt=AwrkNl3O3qxnFAIA0QsM34lQ;_ylu=Y29sbwNpcjIEcG9zAzMEdnRpZAMEc2VjA3Ny/RV=2/RE=1740592079/RO=10/RU=https%3a%2f%2fuk.linkedin.com%2fin%2fyiwei-zhao-b3513b3a/RK=2/RS=Jm8bTNDCgYVoLgQXuz3DvTePlng-">your-profile</a></p>
-        </section>
+            Email: <a href="mailto:yiwei_zhao@hotmail.com">yiwei_zhao@hotmail.com</a></p>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
-    </footer>
+   
+    <h2>EXPERIENCE</h2>
+    
+        <div class="experience">
+        <div class="job-title">Lead Longevity Actuary - Longevity Sciences Team, Phoenix Group</div>
+        <div class="date">October 2022 – Present</div>
+        <ul>
+            <li>Developed internal demographic assumptions for BPA and IA Pricing and Valuation</li>
+            <li>Collaborated with pricing and reinsurance teams to enhance methodologies</li>
+            <li>Created tools for experience analysis and survival modelling</li>
+            <li>Led projects from scoping to completion</li>
+            <li>Managed stakeholder alignment and sign-off processes</li>
+        </ul>
+    </div>
+
+    <div class="experience">
+        <div class="job-title">Longevity Modeller - Demographic Assumptions Team, Lloyds Banking Group</div>
+        <div class="date">June 2014 – September 2022</div>
+        <ul>
+            <li>Built internal models for BPA/IA Pricing using LBG Bank data</li>
+            <li>Conducted annual valuation basis reviews</li>
+            <li>Calibrated SII longevity/mortality risk</li>
+            <li>Improved Individual Annuity Pricing with machine learning</li>
+            <li>Awarded Financial Star of LBG (2020)</li>
+        </ul>
+    </div>
+
+    <h2>EDUCATION</h2>
+    <div class="education">
+        <p><strong>PhD in Actuarial Science</strong><br>
+        University of Kent (2010-2014)<br>
+        Thesis: Piecewise Linear Cohort-based (PLC) Mortality Model</p>
+        
+        <p><strong>MSc in Actuarial Science</strong><br>
+        Heriot-Watt University (2009-2010)<br>
+        Graduated with Distinction</p>
+    </div>
+
+    <h2>SKILLS & COMPETENCIES</h2>
+    <div class="skills">
+        <h3>Programming</h3>
+        <ul>
+            <li>R (Advanced, 5+ years)</li>
+            <li>VBA (5+ years)</li>
+            <li>SQL, SAS, SPSS</li>
+        </ul>
+        
+        <h3>Languages</h3>
+        <ul>
+            <li>Chinese (Native)</li>
+            <li>English (Professional)</li>
+        </ul>
+    </div>
 </body>
 </html>
