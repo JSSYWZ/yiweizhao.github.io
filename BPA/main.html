@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPA Business Hub</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --hover-color: #2980b9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-home {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Main Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 6rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            background-size: cover;
+            background-position: center;
+            min-height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid-overlay {
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 1.5rem;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 2rem;
+            background: #f8f9fa;
+            margin-top: 2rem;
+        }
+
+        .news-container {
+            columns: 2;
+            column-gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .news-container {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://yiweizhao.com" class="nav-home">Return to Home</a>
+    </nav>
+
+    <div class="grid-container">
+        <!-- BPA Market Report -->
+        <a href="market-report.html" class="grid-item" style="background-image: url('images/bpa-market.jpg')">
+            <div class="grid-overlay">
+                <h2>Market Report</h2>
+                <p>Latest transactions & trends</p>
+            </div>
+        </a>
+
+        <!-- Key Knowledge -->
+        <a href="knowledge-base.html" class="grid-item" style="background-image: url('images/bpa-knowledge.jpg')">
+            <div class="grid-overlay">
+                <h2>Key Knowledge</h2>
+                <p>Essential concepts & frameworks</p>
+            </div>
+        </a>
+
+        <!-- Pricing Model -->
+        <a href="pricing.html" class="grid-item" style="background-image: url('images/bpa-pricing.jpg')">
+            <div class="grid-overlay">
+                <h2>Pricing Model</h2>
+                <p>Actuarial models & methodologies</p>
+            </div>
+        </a>
+
+        <!-- Longevity -->
+        <a href="longevity.html" class="grid-item" style="background-image: url('images/bpa-longevity.jpg')">
+            <div class="grid-overlay">
+                <h2>Longevity</h2>
+                <p>Mortality trends & projections</p>
+            </div>
+        </a>
+
+        <!-- Proportion Married -->
+        <a href="marriage.html" class="grid-item" style="background-image: url('images/bpa-marriage.jpg')">
+            <div class="grid-overlay">
+                <h2>Proportion Married</h2>
+                <p>Demographic analysis</p>
+            </div>
+        </a>
+
+        <!-- Reinsurance -->
+        <a href="reinsurance.html" class="grid-item" style="background-image: url('images/bpa-reinsurance.jpg')">
+            <div class="grid-overlay">
+                <h2>Reinsurance</h2>
+                <p>Risk transfer strategies</p>
+            </div>
+        </a>
+
+        <!-- Regulations -->
+        <a href="regulations.html" class="grid-item" style="background-image: url('images/bpa-regulations.jpg')">
+            <div class="grid-overlay">
+                <h2>Regulations</h2>
+                <p>Global compliance updates</p>
+            </div>
+        </a>
+
+        <!-- Others -->
+        <a href="other-topics.html" class="grid-item" style="background-image: url('images/bpa-other.jpg')">
+            <div class="grid-overlay">
+                <h2>Other Topics</h2>
+                <p>Emerging issues & research</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- News Section -->
+    <div class="news-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Latest News Updates</h2>
+        <div class="news-container">
+            <div class="news-item">
+                <h3>2024 Market Outlook</h3>
+                <p>Latest projections from LCP... <a href="news-link1.html">Read more</a></p>
+            </div>
+            <div class="news-item">
+                <h3>Regulatory Changes</h3>
+                <p>New Solvency II updates... <a href="news-link2.html">Read more</a></p>
+            </div>
+            <!-- Add more news items -->
+        </div>
+    </div>
+</body>
+</html>
