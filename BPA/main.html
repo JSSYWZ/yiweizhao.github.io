@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BPA Business Hub</title>
     <style>
+        /* 固定定位作者照片样式 */
+        .author-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: opacity 0.3s;
+            border-radius: 50%; /* 圆形效果 */
+            overflow: hidden;  /* 裁剪图片为圆形 */
+            width: 60px;       /* 控制头像大小 */
+            height: 60px;
+        }
+
+        /* 鼠标悬停效果 */
+        .author-link:hover {
+            opacity: 0.8;
+        }
+
+        /* 图片充满容器 */
+        .author-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例 */
+        }
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -102,6 +126,9 @@
 <body>
     <nav class="navbar">
         <a href="https://yiweizhao.com" class="nav-home">Return to Home</a>
+        <a href="https://yiweizhao.com" class="author-link">
+        <img src="images/photo.jpg" alt="yiwei" class="author-photo">
+    </a>
     </nav>
 
     <div class="grid-container">
