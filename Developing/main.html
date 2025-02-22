@@ -1,180 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- 改用中文语言 -->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPA Business Hub</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developing Hub</title>
     <style>
-        /* 固定定位作者照片样式 */
-        .author-link {
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #4CAF50;
+            --hover: #2980b9;
+            --radius: 8px;
+            --shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 合并通用样式 */
+        [class*="-container"] { max-width: 1200px; margin: 0 auto; }
+        button, input { padding: 8px; border-radius: var(--radius); }
+        button { 
+            background: var(--accent); 
+            color: white;
+            border: 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background: var(--hover); }
+
+        /* 固定定位元素 */
+        .navbar, .author-link { 
             position: fixed;
+            z-index: 1000;
+            background: var(--primary);
+        }
+        .navbar {
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .author-link {
             top: 20px;
             right: 20px;
-            z-index: 1000;
-            transition: opacity 0.3s;
-            border-radius: 50%; /* 圆形效果 */
-            overflow: hidden;  /* 裁剪图片为圆形 */
-            width: 60px;       /* 控制头像大小 */
+            width: 60px;
             height: 60px;
-        }
-
-        /* 鼠标悬停效果 */
-        .author-link:hover {
-            opacity: 0.8;
-        }
-
-        /* 图片充满容器 */
-        .author-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 保持图片比例 */
-        }
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --hover-color: #2980b9;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: var(--primary-color);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-home {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Main Grid */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 6rem 2rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .grid-item {
-            background-size: cover;
-            background-position: center;
-            min-height: 250px;
-            border-radius: 10px;
+            border-radius: 50%;
             overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: opacity 0.3s;
         }
+        .author-link:hover { opacity: 0.8; }
 
-        .grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
+        /* 主内容区 */
+        main { padding: 6rem 2rem 2rem; }
 
-        .grid-overlay {
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 1.5rem;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /* News Section */
-        .news-section {
-            padding: 2rem;
-            background: #f8f9fa;
-            margin-top: 2rem;
-        }
-
-        .news-container {
-            columns: 2;
-            column-gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .news-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .news-container {
-                columns: 1;
-            }
-        }
-        
+        /* 计算器样式 */
         .calculator {
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: var(--radius);
         }
-        
         input {
-            display: block;
             width: 100%;
             margin: 10px 0;
-            padding: 8px;
+            border: 1px solid #ddd;
         }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; }
+            main { padding: 5rem 1rem 1rem; }
         }
-        
-        button:hover {
-            background-color: #45a049;
-        } 
     </style>
 </head>
 <body>
     <nav class="navbar">
         <a href="https://yiweizhao.com" class="nav-home">Return to Home</a>
         <a href="https://yiweizhao.com" class="author-link">
-        <img src="images/photo.jpg" alt="yiwei" class="author-photo">
-    </a>
+            <img src=".../images/photo.jpg" alt="作者头像" loading="lazy">
+        </a>
     </nav>
-    <!-- 用户输入区域 -->
-    <div class="calculator">
-        <input type="number" id="num1" placeholder="输入第一个数字">
-        <input type="number" id="num2" placeholder="输入第二个数字">
-        <button onclick="calculateSum()">计算相加结果</button>
-        <!-- 结果显示区域 -->
-        <p id="result"></p>
-    </div>
-    <!-- 在页面底部添加 script 标签 -->
-     <script>
-      // 这里是你的 JavaScript 代码
-      function calculateSum() {
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        const sum = num1 + num2;
-        document.getElementById('result').textContent = `结果：${sum}`;
-      }
+
+    <main>
+        <div class="calculator">
+            <input type="number" id="num1" placeholder="输入第一个数字" required>
+            <input type="number" id="num2" placeholder="输入第二个数字" required>
+            <button onclick="calculateSum()">计算相加结果</button>
+            <p id="result"></p>
+        </div>
+    </main>
+
+    <script>
+        function calculateSum() {
+            const getNum = id => {
+                const el = document.getElementById(id);
+                return el.checkValidity() ? +el.value : NaN;
+            };
+
+            const sum = getNum('num1') + getNum('num2');
+            document.getElementById('result').textContent = 
+                isNaN(sum) ? '请输入有效数字！' : `计算结果：${sum}`;
+        }
     </script>
 </body>
 </html>
