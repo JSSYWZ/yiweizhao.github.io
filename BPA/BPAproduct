@@ -34,7 +34,10 @@
     </style>
 </head>
 <body>
-    <div class="bpa-container">
+    <div class="container">
+        <a href="https://yiweizhao.com" class="author-link">
+            <img src="\images\photo.jpg" alt="yiwei" class="author-photo">
+        </a>
         <h1>What is a Bulk Purchase Annuity (BPA)?</h1>
         
         <div class="section">
