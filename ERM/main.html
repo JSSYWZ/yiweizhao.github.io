@@ -58,6 +58,44 @@
             margin: 20px 0;
             border-radius: 5px;
         }
+        .jargon {
+            cursor: help;
+            border-bottom: 1px dotted #3498db;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -72,12 +110,13 @@
         <div class="key-point">
             <h2>Why Longevity Matters</h2>
             <ul>
-                <li>🔍 Determines interest compounding period</li>
+                <li>🔍 Determines <span class="jargon" data-term="compounding-interest">interest compounding</span> period</li>
                 <li>⚖️ Balances lender risk vs borrower benefit</li>
-                <li>📈 Impacts loan-to-value calculations</li>
-                <li>🛡️ Affects negative equity protection needs</li>
+                <li>📈 Impacts <span class="jargon" data-term="loan-to-value">loan-to-value</span> calculations</li>
+                <li>🛡️ Affects <span class="jargon" data-term="negative-equity">negative equity</span> protection needs</li>
             </ul>
         </div>
+
 
         <h2>Key Assumptions in ERM Calculations</h2>
         <div class="assumption-box">
@@ -121,5 +160,70 @@
             </ul>
         </div>
     </div>
+
+    <div class="modal-overlay" id="glossaryModal">
+            <div class="modal-content">
+                <h3 id="modalTitle"></h3>
+                <p id="modalContent"></p>
+                <button onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Glossary data
+        const glossary = {
+            "loan-to-value": {
+                title: "Loan-to-Value (LTV)",
+                definition: "The ratio of the loan amount to the appraised value of the property. A key risk metric for lenders."
+            },
+            "negative-equity": {
+                title: "Negative Equity",
+                definition: "When the outstanding loan balance exceeds the property value. Many ERMs include guarantees against this."
+            },
+            "compounding-interest": {
+                title: "Compounding Interest",
+                definition: "Interest calculated on both initial principal and accumulated interest. Critical in ERMs due to deferred repayment."
+            },
+            "equity": {
+                title: "Home Equity",
+                definition: "The difference between property value and outstanding mortgage balance."
+            },
+            "inheritance-tax": {
+                title: "Inheritance Tax",
+                definition: "Tax on assets passed to heirs. ERM proceeds may affect this."
+            }
+            // Add more terms as needed
+        };
+
+        // Add event listeners to jargon terms
+        document.querySelectorAll('.jargon').forEach(item => {
+            item.addEventListener('click', event => {
+                const term = event.target.dataset.term;
+                openModal(term);
+            });
+        });
+
+        function openModal(termKey) {
+            const modal = document.getElementById('glossaryModal');
+            const term = glossary[termKey];
+            
+            document.getElementById('modalTitle').textContent = term.title;
+            document.getElementById('modalContent').textContent = term.definition;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('glossaryModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('glossaryModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
