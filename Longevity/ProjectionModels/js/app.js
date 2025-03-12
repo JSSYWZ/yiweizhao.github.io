@@ -1,5 +1,5 @@
 // 配置后端API地址（替换成你的Heroku应用地址）
-const API_ENDPOINT = 'https://your-heroku-app.herokuapp.com/api/analyze';
+const API_ENDPOINT = 'https://longevityprojection-523b352f8ede.herokuapp.com/api/analyze';
 
 async function startAnalysis() {
   // 获取表单元素
