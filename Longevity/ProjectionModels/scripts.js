@@ -1,28 +1,31 @@
-document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+async function analyzeData() {
+  const formData = new FormData();
+  formData.append('mortality', document.getElementById('mortality').files[0]);
+  formData.append('population', document.getElementById('population').files[0]);
+  formData.append('age', document.getElementById('ageRange').value);
+  formData.append('year', document.getElementById('yearRange').value);
+  formData.append('model', document.getElementById('modelSelect').value);
+
+  try {
+    const response = await fetch('https://your-heroku-app.herokuapp.com/api/analyze', {
+      method: 'POST',
+      body: formData
+    });
     
-    const deathFile = document.getElementById('deathFile').files[0];
-    const populationFile = document.getElementById('populationFile').files[0];
-    const model = document.getElementById('model').value;
-    const ageRange = document.getElementById('ageRange').value;
-    const yearRange = document.getElementById('yearRange').value;
-
-    const formData = new FormData();
-    formData.append('deathFile', deathFile);
-    formData.append('populationFile', populationFile);
-    formData.append('model', model);
-    formData.append('ageRange', ageRange);
-    formData.append('yearRange', yearRange);
-
-    fetch('/upload', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('parameters').textContent = JSON.stringify(data.parameters, null, 2);
-        // 假设返回的数据中包含图像的URL或Base64编码
-        document.getElementById('plots').innerHTML = `<img src="${data.plotUrl}" alt="Plot">`;
-    })
-    .catch(error => console.error('Error:', error));
-});
+    const data = await response.json();
+    
+    // 显示参数
+    document.getElementById('parameters').innerHTML = `
+      <h4>模型参数</h4>
+      <pre>${JSON.stringify(data.parameters, null, 2)}</pre>
+    `;
+    
+    // 显示图表
+    document.getElementById('plots').innerHTML = `
+      <img src="${data.plot_url}" alt="参数趋势图">
+    `;
+    
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
