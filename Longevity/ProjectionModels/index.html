@@ -1,41 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据分析</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>上传数据并选择模型</h1>
-    <form id="uploadForm">
-        <label for="deathFile">上传死亡人数表格:</label>
-        <input type="file" id="deathFile" name="deathFile" accept=".xlsx, .xls" required><br><br>
-        
-        <label for="populationFile">上传人口总数表格:</label>
-        <input type="file" id="populationFile" name="populationFile" accept=".xlsx, .xls" required><br><br>
-        
-        <label for="model">选择模型:</label>
-        <select id="model" name="model">
-            <option value="apc">Age-Period-Cohort模型</option>
-            <option value="lee-carter">Lee-Carter模型</option>
-        </select><br><br>
-        
-        <label for="ageRange">选择年龄段:</label>
-        <input type="text" id="ageRange" name="ageRange" placeholder="例如: 20-80"><br><br>
-        
-        <label for="yearRange">选择历史年份:</label>
-        <input type="text" id="yearRange" name="yearRange" placeholder="例如: 1950-2020"><br><br>
-        
-        <button type="submit">提交</button>
-    </form>
-
-    <div id="results">
-        <h2>结果</h2>
-        <pre id="parameters"></pre>
-        <div id="plots"></div>
+<div id="analyzer">
+  <h2>数据分析</h2>
+  <form id="uploadForm">
+    <div>
+      <label>死亡率表格：</label>
+      <input type="file" id="mortality" accept=".xlsx">
     </div>
-
-    <script src="scripts.js"></script>
-</body>
-</html>
+    <div>
+      <label>人口表格：</label>
+      <input type="file" id="population" accept=".xlsx">
+    </div>
+    <div>
+      <label>年龄范围：</label>
+      <input type="text" id="ageRange" placeholder="20,80">
+    </div>
+    <div>
+      <label>年份范围：</label>
+      <input type="text" id="yearRange" placeholder="1950,2000">
+    </div>
+    <div>
+      <label>选择模型：</label>
+      <select id="modelSelect">
+        <option value="APC">Age-Period-Cohort</option>
+        <option value="Lee-Carter">Lee-Carter</option>
+      </select>
+    </div>
+    <button type="button" onclick="analyzeData()">开始分析</button>
+  </form>
+  <div id="results">
+    <h3>分析结果</h3>
+    <div id="parameters"></div>
+    <div id="plots"></div>
+  </div>
+</div>
