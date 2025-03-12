@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APC模型分析</title>
+</head>
+<body>
+    <h1>上传Excel文件</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="death_file" accept=".xlsx" required> 死亡人数表<br>
+        <input type="file" name="population_file" accept=".xlsx" required> 人口总数表<br>
+        <button type="submit">上传并分析</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>分析结果</title>
+</head>
+<body>
+    <h1>拟合参数</h1>
+    <pre>{{ params }}</pre>
+    
+    <h1>年龄效应图</h1>
+    <img src="{{ url_for('static', filename='age_effect.png') }}" alt="Age Effect">
+    
+    <h1>时期效应图</h1>
+    <img src="{{ url_for('static', filename='period_effect.png') }}" alt="Period Effect">
+    
+    <h1>队列效应图</h1>
+    <img src="{{ url_for('static', filename='cohort_effect.png') }}" alt="Cohort Effect">
+</body>
+</html>
