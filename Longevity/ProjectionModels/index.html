@@ -1,34 +1,54 @@
-<div id="analyzer">
-  <h2>数据分析</h2>
-  <form id="uploadForm">
-    <div>
-      <label>死亡率表格：</label>
-      <input type="file" id="mortality" accept=".xlsx">
-    </div>
-    <div>
-      <label>人口表格：</label>
-      <input type="file" id="population" accept=".xlsx">
-    </div>
-    <div>
-      <label>年龄范围：</label>
-      <input type="text" id="ageRange" placeholder="20,80">
-    </div>
-    <div>
-      <label>年份范围：</label>
-      <input type="text" id="yearRange" placeholder="1950,2000">
-    </div>
-    <div>
-      <label>选择模型：</label>
-      <select id="modelSelect">
-        <option value="APC">Age-Period-Cohort</option>
-        <option value="Lee-Carter">Lee-Carter</option>
-      </select>
-    </div>
-    <button type="button" onclick="analyzeData()">开始分析</button>
-  </form>
-  <div id="results">
-    <h3>分析结果</h3>
-    <div id="parameters"></div>
-    <div id="plots"></div>
+<!-- 数据分析模块 -->
+<section class="analysis-section">
+  <h2>死亡率分析工具</h2>
+  
+  <!-- 文件上传表单 -->
+  <div class="upload-box">
+    <form id="analysisForm">
+      <div class="form-group">
+        <label for="mortalityFile">死亡率表格（.xlsx）</label>
+        <input type="file" id="mortalityFile" accept=".xlsx" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="populationFile">人口表格（.xlsx）</label>
+        <input type="file" id="populationFile" accept=".xlsx" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="ageRange">年龄范围（如：20,80）</label>
+        <input type="text" id="ageRange" pattern="\d+,\d+" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="yearRange">年份范围（如：1990,2020）</label>
+        <input type="text" id="yearRange" pattern="\d+,\d+" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="modelSelect">选择分析模型</label>
+        <select id="modelSelect">
+          <option value="APC">Age-Period-Cohort 模型</option>
+          <option value="Lee-Carter">Lee-Carter 模型</option>
+        </select>
+      </div>
+      
+      <button type="button" onclick="startAnalysis()" class="analysis-btn">
+        开始分析
+      </button>
+    </form>
   </div>
-</div>
+
+  <!-- 结果显示区域 -->
+  <div id="results" class="results-box" style="display:none;">
+    <h3>分析结果</h3>
+    <div class="result-section">
+      <h4>模型参数</h4>
+      <pre id="parametersOutput"></pre>
+    </div>
+    <div class="result-section">
+      <h4>趋势图表</h4>
+      <div id="plotContainer"></div>
+    </div>
+  </div>
+</section>
