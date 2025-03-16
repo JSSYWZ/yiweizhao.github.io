@@ -1,56 +1,42 @@
-<!-- Plotly图表库 -->
-<script src="js/app.js"></script>
-<!-- 数据分析模块 -->
-<section class="analysis-section">
-  <h2>死亡率分析工具</h2>
-  
-  <!-- 文件上传表单 -->
-  <div class="upload-box">
-    <form id="analysisForm">
-      <div class="form-group">
-        <label for="mortalityFile">死亡率表格（.xlsx）</label>
-        <input type="file" id="mortalityFile" accept=".xlsx" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="populationFile">人口表格（.xlsx）</label>
-        <input type="file" id="populationFile" accept=".xlsx" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="ageRange">年龄范围（如：20,80）</label>
-        <input type="text" id="ageRange" pattern="\d+,\d+" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="yearRange">年份范围（如：1990,2020）</label>
-        <input type="text" id="yearRange" pattern="\d+,\d+" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="modelSelect">选择分析模型</label>
-        <select id="modelSelect">
-          <option value="APC">Age-Period-Cohort 模型</option>
-          <option value="Lee-Carter">Lee-Carter 模型</option>
-        </select>
-      </div>
-      
-      <button type="button" onclick="startAnalysis()" class="analysis-btn">
-        开始分析
-      </button>
-    </form>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APC Model Analysis</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>APC Mortality Analysis</h1>
+        
+        <form id="uploadForm">
+            <!-- 死亡人数上传 -->
+            <div class="form-group">
+                <label for="deathsFile">上传死亡人数表格（Excel）:</label>
+                <input type="file" id="deathsFile" accept=".xlsx, .xls" required>
+            </div>
+            
+            <!-- 人口总数上传 -->
+            <div class="form-group">
+                <label for="populationFile">上传人口总数表格（Excel）:</label>
+                <input type="file" id="populationFile" accept=".xlsx, .xls" required>
+            </div>
+            
+            <button type="submit">开始分析</button>
+        </form>
 
-  <!-- 结果显示区域 -->
-  <div id="results" class="results-box" style="display:none;">
-    <h3>分析结果</h3>
-    <div class="result-section">
-      <h4>模型参数</h4>
-      <pre id="parametersOutput"></pre>
+        <!-- 结果显示区域 -->
+        <div id="results">
+            <h2>分析结果</h2>
+            <div id="parameters"></div>
+            <div id="charts">
+                <canvas id="cohortChart"></canvas>
+                <canvas id="ageEffectChart"></canvas>
+            </div>
+        </div>
     </div>
-    <div class="result-section">
-      <h4>趋势图表</h4>
-      <div id="plotContainer"></div>
-    </div>
-  </div>
-</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/apc.js"></script>
+</body>
+</html>
