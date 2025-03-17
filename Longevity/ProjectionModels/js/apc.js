@@ -1,7 +1,12 @@
+// 初始化图表实例缓存
+let cohortChartInstance = null;
+let ageEffectChartInstance = null;
+
+// 绑定表单提交事件
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // 获取元素引用
+    // 获取DOM元素引用
     const resultsDiv = document.getElementById('results');
     const chartsDiv = document.getElementById('charts');
     const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -28,7 +33,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             throw new Error('仅支持.xlsx格式的Excel文件');
         }
 
-        // 构建请求
+        // 构建FormData
         const formData = new FormData();
         formData.append('deaths', deathsFile);
         formData.append('population', populationFile);
@@ -61,7 +66,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             </div>
         `;
 
-        // 显示结果
+        // 显示拟合参数
         document.getElementById('parameters').innerHTML = `
             <h3>拟合参数</h3>
             <pre>${JSON.stringify(result.parameters, null, 2)}</pre>
@@ -92,10 +97,10 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     }
 });
 
-// 图表实例缓存
-let cohortChartInstance = null;
-let ageEffectChartInstance = null;
-
+/**
+ * 渲染队列效应和年龄效应图表
+ * @param {Object} plotData - 包含图表数据的对象
+ */
 function renderCharts(plotData) {
     // 销毁旧图表实例
     if (cohortChartInstance) cohortChartInstance.destroy();
@@ -105,13 +110,14 @@ function renderCharts(plotData) {
     cohortChartInstance = new Chart(document.getElementById('cohortChart'), {
         type: 'line',
         data: {
-            labels: plotData.cohort.x,
+            labels: plotData.cohort.x.map(age => `${age}岁`), // 年龄标签
             datasets: [{
                 label: '队列效应',
                 data: plotData.cohort.y,
                 borderColor: '#4CAF50',
                 backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                tension: 0.4
+                tension: 0.4, // 曲线平滑度
+                fill: true
             }]
         },
         options: {
@@ -121,6 +127,20 @@ function renderCharts(plotData) {
                     display: true,
                     text: '队列效应趋势分析'
                 }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: '年龄'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: '效应值'
+                    }
+                }
             }
         }
     });
@@ -129,7 +149,7 @@ function renderCharts(plotData) {
     ageEffectChartInstance = new Chart(document.getElementById('ageEffectChart'), {
         type: 'bar',
         data: {
-            labels: plotData.ageEffect.x,
+            labels: plotData.ageEffect.x, // 年份标签
             datasets: [{
                 label: '年龄效应',
                 data: plotData.ageEffect.y,
@@ -140,15 +160,25 @@ function renderCharts(plotData) {
         },
         options: {
             responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
             plugins: {
                 title: {
                     display: true,
                     text: '年龄效应分布'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: '年份'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '效应值'
+                    }
                 }
             }
         }
