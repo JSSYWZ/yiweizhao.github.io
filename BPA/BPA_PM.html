@@ -7,6 +7,39 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+        /* 固定定位作者照片样式 */
+        .author-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: opacity 0.3s;
+            border-radius: 50%; /* 圆形效果 */
+            overflow: hidden;  /* 裁剪图片为圆形 */
+            width: 60px;       /* 控制头像大小 */
+            height: 60px;
+        }
+
+        /* 鼠标悬停效果 */
+        .author-link:hover {
+            opacity: 0.8;
+        }
+
+        /* 图片充满容器 */
+        .author-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例 */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -59,7 +92,11 @@
     </style>
 </head>
 <body>
-    <h1>Markov Chain Model for Proportion Married Assumptions</h1>
+    <div class="container">
+        <a href="https://yiweizhao.com" class="author-link">
+            <img src="\images\photo.jpg" alt="yiwei" class="author-photo">
+        </a>
+        <h1>BPA Markov Chain Model for Proportion Married Assumptions</h1>
     
     <section>
         <h2>Model Overview</h2>
