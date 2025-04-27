@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markov Chain-Based Proportion Married Assumptions Model</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .math {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .flex-container img {
+            flex: 1;
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markov Chain Model for Proportion Married Assumptions</h1>
+    
+    <section>
+        <h2>Model Overview</h2>
+        <p>The Life2 Proportion Married Assumptions model applies Markov Chain methodology to ONS England and Wales population data (marital status, marriage/divorce rates) to predict probabilities of pension scheme members transitioning between states: Never Married (NM), Married (M), Divorced (D), Widowed (W), Cohabiting (Co), and Deceased (Dth).</p>
+        <img src="media/image1.png" alt="State transition diagram">
+    </section>
+
+    <section>
+        <h2>Initial Status Determination</h2>
+        <p>Initial marital status is determined using three data sources prioritized as: Write-Out (WO) survey > LexisNexis (LN) trace > Administration Data (AD).</p>
+        
+        <h3>LexisNexis Marital Status Codes</h3>
+        <table>
+            <thead>
+                <tr><th>LN Code</th><th>Marital Status</th><th>BPA Scheme %</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>LN 1</td><td>Married</td><td>40% - 50%</td></tr>
+                <tr><td>LN 2</td><td>Living as Married</td><td>8% - 10%</td></tr>
+                <tr><td>LN 3</td><td>Living with Family</td><td>4% - 8%</td></tr>
+                <tr><td>LN 4</td><td>Same-Sex Cohabitee</td><td>0% - 2%</td></tr>
+                <tr><td>LN 5</td><td>Multi Household</td><td>2% - 5%</td></tr>
+                <tr><td>LN 6</td><td>Living Alone</td><td>10% - 20%</td></tr>
+                <tr><td>LN 7</td><td>Unknown</td><td>10% - 25%</td></tr>
+                <tr><td>LN 8</td><td>Widowed</td><td>0% - 1%</td></tr>
+                <tr><td>LN 9</td><td>Invalid</td><td>0%</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Transition Matrix & Probability Calculations</h2>
+        <div class="math">
+            $$T(x) = \begin{pmatrix}
+            p_{1,1}(x) & \cdots & p_{1,8}(x) \\
+            \vdots & \ddots & \vdots \\
+            p_{8,1}(x) & \cdots & p_{8,8}(x)
+            \end{pmatrix}$$
+        </div>
+        <p>Where \( p_{i,j}(x) \) denotes the probability of transitioning from state \(i\) to \(j\) at age \(x\).</p>
+    </section>
+
+    <section>
+        <h2>Key Transition Rate Analysis</h2>
+        
+        <h3>Marriage Rates</h3>
+        <img src="media/image2.png" alt="Marriage rate trends">
+        <p>Remarriage rates for divorced individuals are 60% higher than never-married cohorts. Cohabiting individuals are 1.5× more likely to marry.</p>
+
+        <h3>Divorce Rates</h3>
+        <img src="media/image3.png" alt="Divorce rate trends">
+        <p>The 2020 Divorce Reform Act introduced a 20-week cooling-off period, potentially reducing impulsive divorces.</p>
+
+        <h3>Mortality Adjustments</h3>
+        <table>
+            <thead>
+                <tr><th>Marital Status</th><th>20-64 (Male)</th><th>65+ (Male)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Married</td><td>53%</td><td>76%</td></tr>
+                <tr><td>Never Married</td><td>148%</td><td>174%</td></tr>
+                <tr><td>Divorced</td><td>135%</td><td>167%</td></tr>
+                <tr><td>Widowed</td><td>120%</td><td>121%</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Projection Examples</h2>
+        <div class="flex-container">
+            <img src="media/image6.png" alt="Male projections">
+            <img src="media/image7.png" alt="Female projections">
+        </div>
+        <p>Females show higher widowhood probabilities (yellow areas) due to lower mortality rates compared to males.</p>
+    </section>
+
+    <section>
+        <h2>Conclusion</h2>
+        <img src="media/image12.png" alt="Long-term trends">
+        <p>Marriage rates have declined by 35% over 50 years, while cohabitation rose from 19.7% (2012) to 22.7% (2022). Traditional 100% married assumption at age 55 is unrealistic – MMA projections better capture divorce/remarriage dynamics.</p>
+    </section>
+</body>
+</html>
