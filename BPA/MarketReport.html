@@ -153,5 +153,49 @@
             <p>The BPA market has become a $100+ billion global industry, serving as critical infrastructure for pension risk management. While technological innovation and regulatory changes are driving growth, insurers must navigate evolving challenges in longevity risk and margin pressures.</p>
         </div>
     </div>
+    
+    <div id="bulk-annuity-news">
+      <h2>Latest Bulk Annuity Market News</h2>
+      <p>Loading updates...</p>
+    </div>
 </body>
+
+    <script>
+    async function loadBulkAnnuityNews() {
+        const apiKey = "YOUR_API_KEY_HERE";
+        const query = "bulk annuity market OR pension risk transfer OR buy-in buy-out";
+        const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=5&apikey=${apiKey}`;
+    
+        const container = document.getElementById("bulk-annuity-news");
+    
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+    
+            if (!data.articles || data.articles.length === 0) {
+                container.innerHTML = "<p>No recent updates found.</p>";
+                return;
+            }
+    
+            let html = "<ul>";
+            data.articles.forEach(article => {
+                html += `
+                    <li>
+                        <a href="${article.url}" target="_blank">${article.title}</a><br>
+                        <small>${new Date(article.publishedAt).toLocaleString()}</small>
+                    </li>
+                `;
+            });
+            html += "</ul>";
+    
+            container.innerHTML = html;
+    
+        } catch (error) {
+            container.innerHTML = "<p>Error loading news.</p>";
+            console.error(error);
+        }
+    }
+    
+    loadBulkAnnuityNews();
+    </script>
 </html>
