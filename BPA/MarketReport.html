@@ -12,30 +12,29 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
-        /* 固定定位作者照片样式 */
+
         .author-link {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
             transition: opacity 0.3s;
-            border-radius: 50%; /* 圆形效果 */
-            overflow: hidden;  /* 裁剪图片为圆形 */
-            width: 60px;       /* 控制头像大小 */
+            border-radius: 50%;
+            overflow: hidden;
+            width: 60px;
             height: 60px;
         }
 
-        /* 鼠标悬停效果 */
         .author-link:hover {
             opacity: 0.8;
         }
 
-        /* 图片充满容器 */
         .author-photo {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 保持图片比例 */
+            object-fit: cover;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -95,11 +94,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <a href="https://yiweizhao.com" class="author-link">
-            <img src="\images\photo.jpg" alt="yiwei" class="author-photo">
+            <img src="/images/photo.jpg" alt="yiwei" class="author-photo">
         </a>
+
         <h1>BPA Market Report: July 2023 - July 2024</h1>
 
         <div class="section">
@@ -152,31 +153,31 @@
             <h2>Why This Matters</h2>
             <p>The BPA market has become a $100+ billion global industry, serving as critical infrastructure for pension risk management. While technological innovation and regulatory changes are driving growth, insurers must navigate evolving challenges in longevity risk and margin pressures.</p>
         </div>
+
+        <!-- News Widget Section -->
+        <div class="section" id="bulk-annuity-news">
+            <h2>Latest Bulk Annuity Market News</h2>
+            <p>Loading updates...</p>
+        </div>
     </div>
-    
-    <div id="bulk-annuity-news">
-      <h2>Latest Bulk Annuity Market News</h2>
-      <p>Loading updates...</p>
-    </div>
-</body>
 
     <script>
     async function loadBulkAnnuityNews() {
         const apiKey = "YOUR_API_KEY_HERE";
         const query = "bulk annuity market OR pension risk transfer OR buy-in buy-out";
         const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=5&apikey=${apiKey}`;
-    
+
         const container = document.getElementById("bulk-annuity-news");
-    
+
         try {
             const response = await fetch(url);
             const data = await response.json();
-    
+
             if (!data.articles || data.articles.length === 0) {
                 container.innerHTML = "<p>No recent updates found.</p>";
                 return;
             }
-    
+
             let html = "<ul>";
             data.articles.forEach(article => {
                 html += `
@@ -187,15 +188,16 @@
                 `;
             });
             html += "</ul>";
-    
+
             container.innerHTML = html;
-    
+
         } catch (error) {
             container.innerHTML = "<p>Error loading news.</p>";
             console.error(error);
         }
     }
-    
+
     loadBulkAnnuityNews();
     </script>
+</body>
 </html>
