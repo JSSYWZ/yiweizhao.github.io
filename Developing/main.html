@@ -1,108 +1,194 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- 改用中文语言 -->
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Developing Hub</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #4CAF50;
-            --hover: #2980b9;
-            --radius: 8px;
-            --shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* 合并通用样式 */
-        [class*="-container"] { max-width: 1200px; margin: 0 auto; }
-        button, input { padding: 8px; border-radius: var(--radius); }
-        button { 
-            background: var(--accent); 
-            color: white;
-            border: 0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        button:hover { background: var(--hover); }
-
-        /* 固定定位元素 */
-        .navbar, .author-link { 
-            position: fixed;
-            z-index: 1000;
-            background: var(--primary);
-        }
-        .navbar {
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .author-link {
-            top: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            transition: opacity 0.3s;
-        }
-        .author-link:hover { opacity: 0.8; }
-
-        /* 主内容区 */
-        main { padding: 6rem 2rem 2rem; }
-
-        /* 计算器样式 */
-        .calculator {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
-        }
-        input {
-            width: 100%;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-        }
-
-        /* 响应式优化 */
-        @media (max-width: 768px) {
-            .navbar { padding: 1rem; }
-            main { padding: 5rem 1rem 1rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Vocabulary Spelling Practice</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .label {
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    #meaning {
+      font-size: 18px;
+      margin: 8px 0 16px;
+      color: #333;
+    }
+    #answerInput {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 12px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #feedback {
+      margin-top: 10px;
+      min-height: 24px;
+      font-weight: 600;
+    }
+    #feedback.ok {
+      color: #1a7f37;
+    }
+    #feedback.err {
+      color: #d32f2f;
+    }
+    #progress {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    #wrongList {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #b71c1c;
+      white-space: pre-line;
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="https://yiweizhao.com" class="nav-home">Return to Home</a>
-        <a href="https://yiweizhao.com" class="author-link">
-            <img src="../images/photo1.jpg" alt="作者头像" loading="lazy">
-        </a>
-    </nav>
+  <h1>Vocabulary Spelling Practice</h1>
 
-    <main>
-        <div class="calculator">
-            <input type="number" id="num1" placeholder="输入第一个数字" required>
-            <input type="number" id="num2" placeholder="输入第二个数字" required>
-            <button onclick="calculateSum()">计算相加结果</button>
-            <p id="result"></p>
-        </div>
-    </main>
+  <div class="card">
+    <div class="label">Definition:</div>
+    <div id="meaning">Loading...</div>
 
-    <script>
-        function calculateSum() {
-            const getNum = id => {
-                const el = document.getElementById(id);
-                return el.checkValidity() ? +el.value : NaN;
-            };
+    <div class="label">Type the correct word:</div>
+    <input id="answerInput" type="text" autocomplete="off" />
+    <button id="submitBtn">Submit (Enter)</button>
 
-            const sum = getNum('num1') + getNum('num2');
-            document.getElementById('result').textContent = 
-                isNaN(sum) ? '请输入有效数字！' : `计算结果：${sum}`;
-        }
-    </script>
+    <div id="feedback"></div>
+    <div id="progress"></div>
+    <div id="wrongList"></div>
+  </div>
+
+  <script>
+    // ===== 1. Vocabulary list (English definitions only) =====
+    const words = [
+      { word: "apple", meaning: "a round fruit with red, green, or yellow skin" },
+      { word: "banana", meaning: "a long curved fruit with a yellow skin" },
+      { word: "orange", meaning: "a round citrus fruit with a thick orange skin" },
+      { word: "teacher", meaning: "a person who helps others learn" },
+      { word: "beautiful", meaning: "pleasing to the senses or mind" }
+    ];
+
+    // ===== 2. State =====
+    let remaining = [...words];
+    const wrongLog = [];
+    let current = null;
+
+    const meaningEl = document.getElementById("meaning");
+    const inputEl = document.getElementById("answerInput");
+    const feedbackEl = document.getElementById("feedback");
+    const progressEl = document.getElementById("progress");
+    const wrongListEl = document.getElementById("wrongList");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // ===== 3. Helpers =====
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function pickNextWord() {
+      if (remaining.length === 0) {
+        meaningEl.textContent = "🎉 Great job! You have mastered all words.";
+        feedbackEl.textContent = "";
+        progressEl.textContent = `Total words: ${words.length} — All mastered!`;
+        inputEl.disabled = true;
+        submitBtn.disabled = true;
+        return;
+      }
+
+      shuffle(remaining);
+      current = remaining[0];
+
+      meaningEl.textContent = current.meaning;
+      inputEl.value = "";
+      inputEl.focus();
+      feedbackEl.textContent = "";
+      feedbackEl.className = "";
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const mastered = words.length - remaining.length;
+      progressEl.textContent = `Mastered: ${mastered}/${words.length}`;
+
+      if (wrongLog.length > 0) {
+        wrongListEl.textContent =
+          "Mistakes:\n" +
+          wrongLog
+            .map(
+              (item, idx) =>
+                `${idx + 1}. Definition: ${item.meaning}\n   Correct: ${item.correct}\n   You typed: ${item.input}`
+            )
+            .join("\n");
+      } else {
+        wrongListEl.textContent = "";
+      }
+    }
+
+    function checkAnswer() {
+      if (!current) return;
+
+      const userInput = inputEl.value.trim().toLowerCase();
+      const correct = current.word.toLowerCase();
+
+      if (!userInput) {
+        feedbackEl.textContent = "Please type something.";
+        feedbackEl.className = "err";
+        return;
+      }
+
+      if (userInput === correct) {
+        feedbackEl.textContent = "✅ Correct!";
+        feedbackEl.className = "ok";
+        remaining = remaining.filter(item => item !== current);
+      } else {
+        feedbackEl.textContent = "❌ Incorrect!";
+        feedbackEl.className = "err";
+
+        wrongLog.push({
+          meaning: current.meaning,
+          correct: current.word,
+          input: userInput
+        });
+      }
+
+      setTimeout(pickNextWord, 600);
+    }
+
+    submitBtn.addEventListener("click", checkAnswer);
+    inputEl.addEventListener("keydown", e => {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    pickNextWord();
+  </script>
 </body>
 </html>
