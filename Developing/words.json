@@ -1,1 +1,369 @@
-
+[
+  {
+    "word": "analyse",
+    "pos": "v.",
+    "meaning": "to study something carefully to understand it better",
+    "example": "The scientist looked closely at the results to find patterns."
+  },
+  {
+    "word": "approach",
+    "pos": "n.",
+    "meaning": "a way of dealing with a situation or problem",
+    "example": "The team tried a new method to solve the issue."
+  },
+  {
+    "word": "assume",
+    "pos": "v.",
+    "meaning": "to accept something as true without proof",
+    "example": "People sometimes believe things without checking the facts."
+  },
+  {
+    "word": "benefit",
+    "pos": "n.",
+    "meaning": "a helpful or good effect",
+    "example": "Regular exercise can improve your health in many ways."
+  },
+  {
+    "word": "complex",
+    "pos": "adj.",
+    "meaning": "involving many different parts; not simple",
+    "example": "The problem required careful thinking to understand fully."
+  },
+  {
+    "word": "concept",
+    "pos": "n.",
+    "meaning": "an idea or principle",
+    "example": "The teacher explained the idea using simple examples."
+  },
+  {
+    "word": "consequence",
+    "pos": "n.",
+    "meaning": "a result of an action or situation",
+    "example": "The mistake led to unexpected results."
+  },
+  {
+    "word": "consistent",
+    "pos": "adj.",
+    "meaning": "always behaving or happening in a similar way",
+    "example": "Her work quality stayed the same throughout the year."
+  },
+  {
+    "word": "contrast",
+    "pos": "n.",
+    "meaning": "a difference between two things",
+    "example": "The two paintings showed very different styles."
+  },
+  {
+    "word": "criteria",
+    "pos": "n.",
+    "meaning": "standards used to judge or decide something",
+    "example": "The school used clear rules to select the winners."
+  },
+  {
+    "word": "derive",
+    "pos": "v.",
+    "meaning": "to get something from a source",
+    "example": "Many English words come from Latin."
+  },
+  {
+    "word": "emphasise",
+    "pos": "v.",
+    "meaning": "to show that something is important",
+    "example": "The coach highlighted the need for teamwork."
+  },
+  {
+    "word": "evaluate",
+    "pos": "v.",
+    "meaning": "to judge the value or quality of something",
+    "example": "The students checked their work carefully before handing it in."
+  },
+  {
+    "word": "evidence",
+    "pos": "n.",
+    "meaning": "facts or information that show something is true",
+    "example": "The report included facts to support the conclusion."
+  },
+  {
+    "word": "impact",
+    "pos": "n.",
+    "meaning": "a strong effect on someone or something",
+    "example": "The new rule changed how students behaved."
+  },
+  {
+    "word": "interpret",
+    "pos": "v.",
+    "meaning": "to explain the meaning of something",
+    "example": "The student explained the chart in simple terms."
+  },
+  {
+    "word": "justify",
+    "pos": "v.",
+    "meaning": "to give reasons to support an action or idea",
+    "example": "She explained why the decision made sense."
+  },
+  {
+    "word": "method",
+    "pos": "n.",
+    "meaning": "a particular way of doing something",
+    "example": "The class used a new way to solve the problem."
+  },
+  {
+    "word": "obvious",
+    "pos": "adj.",
+    "meaning": "easy to see or understand",
+    "example": "The answer was clear to everyone in the room."
+  },
+  {
+    "word": "significant",
+    "pos": "adj.",
+    "meaning": "important or meaningful",
+    "example": "The discovery changed how people understood the subject."
+  },
+  {
+    "word": "acquire",
+    "pos": "v.",
+    "meaning": "to gain something by effort or experience",
+    "example": "Children often learn new skills by watching others."
+  },
+  {
+    "word": "adapt",
+    "pos": "v.",
+    "meaning": "to change in order to suit a new situation",
+    "example": "Animals often change their behaviour when the weather becomes colder."
+  },
+  {
+    "word": "adequate",
+    "pos": "adj.",
+    "meaning": "good enough for a particular purpose",
+    "example": "The room had enough space for all the students."
+  },
+  {
+    "word": "adjust",
+    "pos": "v.",
+    "meaning": "to change something slightly to make it better",
+    "example": "She moved the chair a little to make it more comfortable."
+  },
+  {
+    "word": "administration",
+    "pos": "n.",
+    "meaning": "the process of managing or organising something",
+    "example": "The office handled all the paperwork for the event."
+  },
+  {
+    "word": "affect",
+    "pos": "v.",
+    "meaning": "to influence something or cause a change",
+    "example": "The weather can change how people feel during the day."
+  },
+  {
+    "word": "alternative",
+    "pos": "n.",
+    "meaning": "another option or choice",
+    "example": "The teacher offered a different way to complete the task."
+  },
+  {
+    "word": "annual",
+    "pos": "adj.",
+    "meaning": "happening once every year",
+    "example": "The school holds a big celebration each year."
+  },
+  {
+    "word": "anticipate",
+    "pos": "v.",
+    "meaning": "to expect something to happen",
+    "example": "The team prepared for possible challenges ahead."
+  },
+  {
+    "word": "apparent",
+    "pos": "adj.",
+    "meaning": "easy to notice or understand",
+    "example": "It was clear that the group needed more time."
+  },
+  {
+    "word": "appropriate",
+    "pos": "adj.",
+    "meaning": "suitable or right for a situation",
+    "example": "The students chose clothes that fit the event’s rules."
+  },
+  {
+    "word": "approximate",
+    "pos": "adj.",
+    "meaning": "close to the exact amount or number",
+    "example": "The journey took about the time they expected."
+  },
+  {
+    "word": "argue",
+    "pos": "v.",
+    "meaning": "to give reasons to support an idea",
+    "example": "The student explained why the plan made sense."
+  },
+  {
+    "word": "assess",
+    "pos": "v.",
+    "meaning": "to judge or evaluate something",
+    "example": "The teacher looked at the work to decide the grade."
+  },
+  {
+    "word": "assistance",
+    "pos": "n.",
+    "meaning": "help or support",
+    "example": "The volunteers offered help to people who needed it."
+  },
+  {
+    "word": "assumption",
+    "pos": "n.",
+    "meaning": "something believed to be true without proof",
+    "example": "People sometimes accept ideas without checking the facts."
+  },
+  {
+    "word": "authority",
+    "pos": "n.",
+    "meaning": "the power to make decisions or control something",
+    "example": "The organisation had the right to set the rules."
+  },
+  {
+    "word": "available",
+    "pos": "adj.",
+    "meaning": "able to be used or obtained",
+    "example": "Extra materials were ready for anyone who needed them."
+  },
+  {
+    "word": "aware",
+    "pos": "adj.",
+    "meaning": "knowing about a situation or fact",
+    "example": "She noticed the changes happening around her."
+  },
+  {
+    "word": "bias",
+    "pos": "n.",
+    "meaning": "an unfair preference for or against something",
+    "example": "The judge made sure the decision was fair to everyone."
+  },
+  {
+    "word": "brief",
+    "pos": "adj.",
+    "meaning": "lasting only a short time",
+    "example": "The meeting ended quickly after the main points were covered."
+  },
+  {
+    "word": "capable",
+    "pos": "adj.",
+    "meaning": "having the ability to do something",
+    "example": "The student showed they could handle difficult tasks."
+  },
+  {
+    "word": "capacity",
+    "pos": "n.",
+    "meaning": "the ability to do something or the amount something can hold",
+    "example": "The hall could fit a large number of people."
+  },
+  {
+    "word": "category",
+    "pos": "n.",
+    "meaning": "a group of things that are similar",
+    "example": "The books were sorted into different groups."
+  },
+  {
+    "word": "challenge",
+    "pos": "n.",
+    "meaning": "a difficult task that requires effort",
+    "example": "The project required careful planning to complete."
+  },
+  {
+    "word": "circumstance",
+    "pos": "n.",
+    "meaning": "a condition or situation affecting something",
+    "example": "The team changed their plan because of new conditions."
+  },
+  {
+    "word": "clarify",
+    "pos": "v.",
+    "meaning": "to make something easier to understand",
+    "example": "The teacher explained the instructions more clearly."
+  },
+  {
+    "word": "collapse",
+    "pos": "v.",
+    "meaning": "to fall down suddenly",
+    "example": "The structure gave way after the storm."
+  },
+  {
+    "word": "comment",
+    "pos": "n.",
+    "meaning": "a spoken or written remark",
+    "example": "The student shared a short opinion about the topic."
+  },
+  {
+    "word": "commitment",
+    "pos": "n.",
+    "meaning": "a promise to do something",
+    "example": "The team worked hard because they cared about the project."
+  },
+  {
+    "word": "community",
+    "pos": "n.",
+    "meaning": "a group of people living in the same area",
+    "example": "The neighbours worked together to improve the park."
+  },
+  {
+    "word": "compensate",
+    "pos": "v.",
+    "meaning": "to make up for something lost or damaged",
+    "example": "The company offered help after the delay."
+  },
+  {
+    "word": "component",
+    "pos": "n.",
+    "meaning": "a part of something larger",
+    "example": "The machine stopped working because one part broke."
+  },
+  {
+    "word": "conclude",
+    "pos": "v.",
+    "meaning": "to reach a decision after thinking",
+    "example": "The group decided the plan was the best option."
+  },
+  {
+    "word": "conduct",
+    "pos": "v.",
+    "meaning": "to organise or carry out an activity",
+    "example": "The researchers carried out a study on the topic."
+  },
+  {
+    "word": "confirm",
+    "pos": "v.",
+    "meaning": "to show that something is true",
+    "example": "The test results supported the earlier findings."
+  },
+  {
+    "word": "conflict",
+    "pos": "n.",
+    "meaning": "a serious disagreement",
+    "example": "The two sides had different ideas about the plan."
+  },
+  {
+    "word": "considerable",
+    "pos": "adj.",
+    "meaning": "large or important",
+    "example": "The project required a lot of time and effort."
+  },
+  {
+    "word": "constant",
+    "pos": "adj.",
+    "meaning": "happening all the time without stopping",
+    "example": "The noise continued throughout the night."
+  },
+  {
+    "word": "construct",
+    "pos": "v.",
+    "meaning": "to build something",
+    "example": "Workers created a new bridge over the river."
+  },
+  {
+    "word": "consult",
+    "pos": "v.",
+    "meaning": "to ask someone for advice",
+    "example": "The student asked an expert before making a decision."
+  },
+  
+]
